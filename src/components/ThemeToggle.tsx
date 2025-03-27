@@ -15,7 +15,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ setMode, currentMode }) => {
   const toggleTheme = () => {
     const newMode = currentMode === 'light' ? 'dark' : 'light';
     setMode(newMode);
-    setItem('theme', newMode); // Save the theme to localStorage
+    setItem('mode', newMode); // Save the theme to localStorage
   };
 
   return (
