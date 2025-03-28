@@ -5,11 +5,13 @@ import DataObjectIcon from '@mui/icons-material/DataObject';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import GeneratingTokensIcon from '@mui/icons-material/GeneratingTokens';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
-import Home from '@/components/Home'
-import JsonFormatter from '@/components/JsonFormatter';
-import Base64EncoderDecoder from '@/components/Base64EncoderDecoder';
-import JwtDecoder from '@/components/JwtDecoder';
-import DiffChecker from '@/components/DiffChecker';
+import Home from '@/components/features/Home'
+import JsonFormatter from '@/components/features/JsonFormatter';
+import Base64EncoderDecoder from '@/components/features/Base64EncoderDecoder';
+import JwtDecoder from '@/components/features/JwtDecoder';
+import LinkIcon from '@mui/icons-material/Link';
+import DiffChecker from '@/components/features/DiffChecker';
+import UrlEncoderDecoder from '../features/UrlEncoderDecoder';
 
 // Define the type for the tab data
 interface TabData {
@@ -24,6 +26,7 @@ const tabData: TabData[] = [
     { label: 'JSON', icon: <DataObjectIcon />, children: <JsonFormatter /> },
     { label: 'Base64 Encode/Decode', icon: <EnhancedEncryptionIcon />, children: <Base64EncoderDecoder /> },
     { label: 'JWT Decode', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
+    { label: 'URL Encode/Decode', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
     { label: 'DiffChecker', icon: <LibraryAddCheckIcon />, children: <DiffChecker /> },
 ];
 
@@ -40,8 +43,15 @@ const MainContent: React.FC = () => {
     return (
         <Box sx={{ width: '100%' }}>
             {/* Tabs Section */}
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="tab functionality">
+            <Box sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                position: 'sticky',
+                top: 0,
+                zIndex: "1000",
+                backgroundColor: 'background.paper',
+            }}>
+                <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="tab functionality">
                     {/* Dynamically render tabs from the tabData array */}
                     {tabData.map((tab, index) => (
                         <Tab icon={tab.icon} iconPosition='start' key={index} label={tab.label} />

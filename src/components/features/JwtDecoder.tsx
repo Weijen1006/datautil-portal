@@ -55,9 +55,19 @@ const JwtDecoder: React.FC = () => {
             />
 
             {/* Decode button */}
-            <Button variant="contained" onClick={() => decodeJwt(jwt)}>
-                Decode JWT
-            </Button>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: 2,
+                    marginBottom: 2,
+                    flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
+                    alignItems: { xs: 'stretch', sm: 'center' }, // Stretch buttons to full width on mobile
+                }}>
+                <Button variant="contained" onClick={() => decodeJwt(jwt)}>
+                    Decode JWT
+                </Button>
+            </Box>
 
             {/* Error message */}
             {error && (

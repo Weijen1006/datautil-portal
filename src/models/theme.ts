@@ -1,1 +1,1 @@
-export type UiMode = 'light' | 'dark'
+export type ThemeMode = 'light' | 'dark'
