@@ -46,8 +46,7 @@ datautil-portal/
     │   ├── MuiThemeProvider.tsx # Material UI theme provider component
     │   └── ThemeToggle.tsx     # Theme toggle component
     ├── models/                 # Folder for TypeScript models/interfaces used throughout the app
-    └── utils/                  # Utility functions for common operations 
-        └── localStorageUtil.ts # Utility functions for local storage operations
+    └── utils/                  # Utility functions for common operations
 ```
 
 ## Setup and Installation
