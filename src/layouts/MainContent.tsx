@@ -5,13 +5,21 @@ import DataObjectIcon from '@mui/icons-material/DataObject';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import GeneratingTokensIcon from '@mui/icons-material/GeneratingTokens';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
-import Home from '@/components/features/Home'
-import JsonFormatter from '@/components/features/JsonFormatter';
-import Base64EncoderDecoder from '@/components/features/Base64EncoderDecoder';
-import JwtDecoder from '@/components/features/JwtDecoder';
 import LinkIcon from '@mui/icons-material/Link';
-import DiffChecker from '@/components/features/DiffChecker';
-import UrlEncoderDecoder from '../features/UrlEncoderDecoder';
+import FunctionsIcon from '@mui/icons-material/Functions';
+import KeyIcon from '@mui/icons-material/Key';
+import NumbersIcon from '@mui/icons-material/Numbers';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import Home from '@/features/Home'
+import JsonFormatter from '@/features/JsonFormatter';
+import Base64EncoderDecoder from '@/features/Base64EncoderDecoder';
+import JwtDecoder from '@/features/JwtDecoder';
+import DiffChecker from '@/features/DiffChecker';
+import UrlEncoderDecoder from '@/features/UrlEncoderDecoder';
+import RegexTool from '@/features/RegexTool';
+import SecretGenerator from '@/features/SecretGenerator';
+import NumberSystemConverter from '@/features/NumberSystemConverter';
+import TimestampConverter from '@/features/TimestampConverter';
 
 // Define the type for the tab data
 interface TabData {
@@ -23,11 +31,15 @@ interface TabData {
 // Array containing the data for the tabs
 const tabData: TabData[] = [
     { label: 'Home', icon: <HomeIcon />, children: <Home /> },
-    { label: 'JSON', icon: <DataObjectIcon />, children: <JsonFormatter /> },
-    { label: 'Base64 Encode/Decode', icon: <EnhancedEncryptionIcon />, children: <Base64EncoderDecoder /> },
-    { label: 'JWT Decode', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
-    { label: 'URL Encode/Decode', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
     { label: 'DiffChecker', icon: <LibraryAddCheckIcon />, children: <DiffChecker /> },
+    { label: 'JSON', icon: <DataObjectIcon />, children: <JsonFormatter /> },
+    { label: 'Base64', icon: <EnhancedEncryptionIcon />, children: <Base64EncoderDecoder /> },
+    { label: 'URL', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
+    { label: 'JWT', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
+    { label: 'Regex', icon: <FunctionsIcon />, children: <RegexTool /> },
+    { label: 'SecretGen', icon: <KeyIcon />, children: <SecretGenerator /> },
+    { label: 'Number', icon: <NumbersIcon />, children: <NumberSystemConverter /> },
+    { label: 'TimeStamp', icon: <AccessTimeIcon />, children: <TimestampConverter />, }
 ];
 
 // Function to implement the component

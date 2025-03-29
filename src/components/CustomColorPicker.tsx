@@ -2,10 +2,17 @@ import React from 'react';
 import { IconButton, Box } from '@mui/material';
 import { setItem } from '@/utils/localStorageUtil';
 import { FormatColorFill } from '@mui/icons-material';
+import { HexColor } from '@/models/theme';
 
-const CustomColorPicker = ({ color, setColor }: { color: string; setColor: (color: string) => void }) => {
+interface CustomColorPickerProps {
+  color: HexColor;
+  setColor: React.Dispatch<React.SetStateAction<HexColor>>
+}
+
+
+const CustomColorPicker: React.FC<CustomColorPickerProps> = ({ color, setColor }) => {
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newThemeColor = event.target.value;
+    const newThemeColor = event.target.value as HexColor;
     setColor(newThemeColor); // Update color state
     setItem('themeColor', newThemeColor);
   };

@@ -1,4 +1,98 @@
-# React + TypeScript + Vite
+# DataUtil Portal
+
+Welcome to **DataUtil Portal**, your go-to suite for powerful data utilities—JSON, Base64, JWT, and more. Simplify your workflow with easy-to-use tools, built for developers, data analysts, and tech enthusiasts.
+
+## Tech Stack
+
+- **Frontend**: React.js
+- **Build Tool**: Vite
+- **UI Framework**: MaterialUI
+- **Hosting**: GitHub Pages
+
+## Prerequisites
+
+Before setting up the project, ensure you have the following installed:
+
+- **Node.js v22.14.0** (Install using [nvm (Linux/Mac)](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows) if needed)
+
+## Project Structure
+
+```graphql
+datautil-portal/
+├── .gitignore                  # Git ignore file to exclude unwanted files from version control
+├── eslint.config.js            # ESLint configuration for JavaScript/TypeScript linting
+├── folder_structure1.txt       # Text file documenting folder structure
+├── index.html                  # Main HTML file
+├── package-lock.json           # Automatically generated for any operations where npm modifies the node_modules directory
+├── package.json                # Contains metadata relevant to the project and its dependencies
+├── README.md                   # Project documentation
+├── tsconfig.app.json           # TypeScript configuration specific to the app
+├── tsconfig.json               # Base TypeScript configuration
+├── tsconfig.node.json          # TypeScript configuration for Node.js
+├── vite.config.ts              # Vite build tool configuration
+├── public/                     # Folder containing static assets served by the app (images, fonts, etc.)
+└── src/                        # Source code for the application
+    ├── App.css                 # Global styling for the app
+    ├── App.tsx                 # Main component that serves as the root of the app
+    ├── index.css               # Styling for the index page
+    ├── main.tsx                # Main entry point for the app
+    ├── vite-env.d.ts           # Vite TypeScript environment declaration
+    ├── components/             # Folder containing reusable React components used throughout the app
+    ├── configs/                # Folder containing configuration files 
+    │   └── constant.ts         # Constants for the application
+    ├── features/               # Folder for feature-specific code, e.g., components and services related to a specific app feature
+    ├── layouts/                # Layout components for structuring pages or sections
+    │   ├── MainContent.tsx     # Main content layout
+    │   ├── MainLayout.tsx      # Main layout component
+    │   ├── MuiThemeProvider.tsx # Material UI theme provider component
+    │   └── ThemeToggle.tsx     # Theme toggle component
+    ├── models/                 # Folder for TypeScript models/interfaces used throughout the app
+    └── utils/                  # Utility functions for common operations 
+        └── localStorageUtil.ts # Utility functions for local storage operations
+```
+
+## Setup and Installation
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/your-username/datautil-portal.git
+cd datautil-portal
+```
+2. **Install dependencies**:
+
+Use the following command to install all necessary dependencies:
+
+```bash
+npm install
+```
+3. **Start development**:
+
+To run the app in development mode, use:
+
+```bash
+npm run dev
+```
+This will start the development server and open the app in your browser.
+
+## Deployment
+1. **Build the project**:
+
+Once you're ready to deploy, first build the project with:
+
+```bash
+npm run build
+```
+2. **Deploy to GitHub Pages**:
+
+After building the app, deploy it to GitHub Pages using:
+
+```bash
+npm run deploy
+```
+This will automatically deploy your app to GitHub Pages.
+
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import CustomResponsiveBox from '@/components/CustomResponsiveBox';
 
 const JwtDecoder: React.FC = () => {
     const [jwt, setJwt] = useState<string>('');
@@ -29,7 +30,7 @@ const JwtDecoder: React.FC = () => {
             setDecodedPayload(JSON.stringify(decodedPayload, null, 2));
             setError('');
         } catch (error) {
-            console.log(error)
+            console.error(error)
             setError('Invalid JWT format or unable to decode');
             setDecodedHeader('');
             setDecodedPayload('');
@@ -55,19 +56,11 @@ const JwtDecoder: React.FC = () => {
             />
 
             {/* Decode button */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: 2,
-                    marginBottom: 2,
-                    flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
-                    alignItems: { xs: 'stretch', sm: 'center' }, // Stretch buttons to full width on mobile
-                }}>
+            <CustomResponsiveBox>
                 <Button variant="contained" onClick={() => decodeJwt(jwt)}>
                     Decode JWT
                 </Button>
-            </Box>
+            </CustomResponsiveBox>
 
             {/* Error message */}
             {error && (

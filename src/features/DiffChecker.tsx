@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, Typography } from '@mui/material';
-import { diffLines } from 'diff';
+import { Box, Grid, TextField, Button, Typography } from '@mui/material';
+import { diffChars, diffLines } from 'diff';
+import CustomResponsiveBox from '@/components/CustomResponsiveBox';
 
 interface DiffPart {
   count?: number | undefined; // The count of the diff part
@@ -16,12 +17,8 @@ const DiffChecker: React.FC = () => {
   const [addedCount, setAddedCount] = useState<number>(0);
   const [removedCount, setRemovedCount] = useState<number>(0);
 
-  // Compare the two texts and set the differences
-  const handleCompare = () => {
-    const diff = diffLines(text1, text2); // Compare text1 and text2
-    setDiffResult(diff);
-    console.log(diff)
 
+  const countDiff = (diff: DiffPart[]) => {
     // Count added and removed lines
     let added = 0;
     let removed = 0;
@@ -32,6 +29,20 @@ const DiffChecker: React.FC = () => {
 
     setAddedCount(added);
     setRemovedCount(removed);
+  }
+
+  // Compare the two texts and set the differences by characters
+  const handleCompareChars = () => {
+    const diff = diffChars(text1, text2); // Compare text1 and text2
+    setDiffResult(diff);
+    countDiff(diff);
+  };
+
+  // Compare the two texts and set the differences by lines
+  const handleCompareLines = () => {
+    const diff = diffLines(text1, text2); // Compare text1 and text2
+    setDiffResult(diff);
+    countDiff(diff);
   };
 
   // Render the diff result with added and removed text
@@ -57,47 +68,48 @@ const DiffChecker: React.FC = () => {
   return (
     <Box sx={{ padding: 4 }}>
       <Typography variant="h4" gutterBottom>
-        Diff Checker
+        DiffChecker
       </Typography>
 
-      {/* Textfield for the first text input */}
-      <TextField
-        label="Text 1"
-        multiline
-        rows={6}
-        fullWidth
-        variant="outlined"
-        value={text1}
-        onChange={(e) => setText1(e.target.value)}
-        sx={{ marginBottom: 2 }}
-      />
+      <Grid container spacing={2} columns={{ xs: 6, sm: 12 }}>
+        {/* First TextField */}
+        <Grid size={6}>
+          <TextField
+            label="Text 1"
+            multiline
+            rows={12}
+            fullWidth
+            variant="outlined"
+            value={text1}
+            onChange={(e) => setText1(e.target.value)}
+            sx={{ marginBottom: 2 }}
+          />
+        </Grid>
 
-      {/* Textfield for the second text input */}
-      <TextField
-        label="Text 2"
-        multiline
-        rows={6}
-        fullWidth
-        variant="outlined"
-        value={text2}
-        onChange={(e) => setText2(e.target.value)}
-        sx={{ marginBottom: 2 }}
-      />
+        {/* Second TextField */}
+        <Grid size={6}>
+          <TextField
+            label="Text 2"
+            multiline
+            rows={12}
+            fullWidth
+            variant="outlined"
+            value={text2}
+            onChange={(e) => setText2(e.target.value)}
+            sx={{ marginBottom: 2 }}
+          />
+        </Grid>
+      </Grid>
 
       {/* Compare button */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 2,
-          marginBottom: 2,
-          flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
-          alignItems: { xs: 'stretch', sm: 'center' }, // Stretch buttons to full width on mobile
-        }}>
-        <Button variant="contained" onClick={handleCompare} sx={{ marginBottom: 2 }}>
-          Compare Texts
+      <CustomResponsiveBox>
+        <Button variant="contained" onClick={handleCompareChars} sx={{ marginBottom: 2 }}>
+          Compare Characters
         </Button>
-      </Box>
+        <Button variant="contained" onClick={handleCompareLines} sx={{ marginBottom: 2 }}>
+          Compare Lines
+        </Button>
+      </CustomResponsiveBox>
 
       {/* Display added and removed line counts with colors */}
       {diffResult.length > 0 && (
@@ -125,7 +137,13 @@ const DiffChecker: React.FC = () => {
           maxHeight: '300px', // Limit height
           overflowY: 'auto',  // Enable scrolling if content exceeds max height
         }}>
-          <Typography variant="body1" component="pre">
+          <Typography
+            variant="body1"
+            component="pre"
+            sx={{
+              wordWrap: 'break-word',
+              whiteSpace: 'pre-wrap',
+            }}>
             {renderDiff()}
           </Typography>
         </Box>

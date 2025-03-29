@@ -2,14 +2,14 @@ import React from 'react';
 import { IconButton } from '@mui/material';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { setItem } from '@/utils/localStorageUtil';
-import { ThemeMode } from '@/models/theme';
-import CustomColorPicker from '@/components/layouts/CustomColorPicker';
+import { ThemeMode, HexColor } from '@/models/theme';
+import CustomColorPicker from '@/components/CustomColorPicker';
 
 interface ThemeToggleProps {
   setThemeMode: React.Dispatch<React.SetStateAction<ThemeMode>>;
-  setThemeColor: React.Dispatch<React.SetStateAction<string>>
+  setThemeColor: React.Dispatch<React.SetStateAction<HexColor>>;
   currentThemeMode: ThemeMode;
-  currentThemeColor: string;
+  currentThemeColor: HexColor;
 }
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ setThemeMode, setThemeColor, currentThemeMode, currentThemeColor }) => {

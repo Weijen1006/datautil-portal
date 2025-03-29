@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import MuiThemeProvider from '@/components/layouts/MuiThemeProvider';
-import ThemeToggle from '@/components/layouts/ThemeToggle';
+import MuiThemeProvider from '@/layouts/MuiThemeProvider';
+import ThemeToggle from '@/layouts/ThemeToggle';
 import { getItem } from '@/utils/localStorageUtil';
-import { ThemeMode } from '@/models/theme';
+import { ThemeMode, HexColor } from '@/models/theme';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
-import MainContent from '@/components/layouts/MainContent';
+import MainContent from '@/layouts/MainContent';
+import { APP_NAME, LOGO_PATH, DEFAULT_THEME_MODE, DEFAULT_THEME_COLOR } from '@/configs/constant';
 
 const MainLayout: React.FC = () => {
-    const currentThemeMode = getItem<ThemeMode>('themeMode') || 'light';
+    const currentThemeMode = getItem<ThemeMode>('themeMode') || DEFAULT_THEME_MODE;
     const [themeMode, setThemeMode] = useState<ThemeMode>(currentThemeMode);
-    const currentThemeColor = getItem<string>('themeColor') || '#1976d2';
-    const [themeColor, setThemeColor] = useState<string>(currentThemeColor)
+    const currentThemeColor = getItem<HexColor>('themeColor') || DEFAULT_THEME_COLOR;
+    const [themeColor, setThemeColor] = useState<HexColor>(currentThemeColor)
 
     return (
         <MuiThemeProvider themeMode={themeMode} themeColor={themeColor}>
@@ -18,12 +19,12 @@ const MainLayout: React.FC = () => {
                 <AppBar position="sticky">
                     <Toolbar>
                         <img
-                            src="logo.png"
+                            src={LOGO_PATH}
                             alt="Logo"
                             style={{ width: 30, height: 30, marginRight: 10 }}
                         />
                         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                            DataUtil Portal
+                            {APP_NAME}
                         </Typography>
                         <ThemeToggle setThemeMode={setThemeMode} setThemeColor={setThemeColor} currentThemeMode={currentThemeMode} currentThemeColor={currentThemeColor} />
                     </Toolbar>

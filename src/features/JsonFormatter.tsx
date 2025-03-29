@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import CustomResponsiveBox from '@/components/CustomResponsiveBox';
 
 const JsonFormatter: React.FC = () => {
     const [inputJson, setInputJson] = useState<string>('');
     const [formattedJson, setFormattedJson] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     // Format JSON (pretty print)
     const formatJson = () => {
@@ -11,9 +13,11 @@ const JsonFormatter: React.FC = () => {
             const parsed = JSON.parse(inputJson);
             const formatted = JSON.stringify(parsed, null, 2); // Indent with 2 spaces
             setFormattedJson(formatted);
+            setError('')
         } catch (error) {
-            console.log(error);
-            setFormattedJson('Invalid JSON');
+            console.error(error);
+            setError('Invalid JSON');
+            setFormattedJson('');
         }
     };
 
@@ -24,8 +28,9 @@ const JsonFormatter: React.FC = () => {
             const serialized = JSON.stringify(parsed); // Convert JSON object to string
             setFormattedJson(serialized);
         } catch (error) {
-            console.log(error);
-            setFormattedJson('Invalid JSON');
+            console.error(error);
+            setError('Invalid JSON');
+            setFormattedJson('');
         }
     };
 
@@ -40,8 +45,9 @@ const JsonFormatter: React.FC = () => {
                 .replace(/\t/g, '\\t');  // Escape tab characters
             setFormattedJson(escaped);
         } catch (error) {
-            console.log(error);
-            setFormattedJson('Invalid JSON or error unescaping');
+            console.error(error);
+            setError('Invalid JSON or error unescaping');
+            setFormattedJson('');
         }
     };
 
@@ -56,8 +62,9 @@ const JsonFormatter: React.FC = () => {
                 .replace(/\\t/g, '\t');   // Unescape tab characters
             setFormattedJson(unescaped);
         } catch (error) {
-            console.log(error);
-            setFormattedJson('Invalid JSON or error unescaping');
+            console.error(error);
+            setError('Invalid JSON or error unescaping');
+            setFormattedJson('');
         }
     };
 
@@ -74,8 +81,9 @@ const JsonFormatter: React.FC = () => {
             const formattedSortedJson = JSON.stringify(sorted, null, 2); // Pretty print after sorting
             setFormattedJson(formattedSortedJson);
         } catch (error) {
-            console.log(error);
-            setFormattedJson('Invalid JSON');
+            console.error(error);
+            setError('Invalid JSON');
+            setFormattedJson('');
         }
     };
 
@@ -95,15 +103,7 @@ const JsonFormatter: React.FC = () => {
                 sx={{ marginBottom: 2 }}
             />
             {/* Buttons to trigger JSON actions */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: 2,
-                    marginBottom: 2,
-                    flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
-                    alignItems: { xs: 'stretch', sm: 'center' }, // Stretch buttons to full width on mobile
-                }}>
+            <CustomResponsiveBox>
                 <Button variant="contained" onClick={formatJson}>
                     Format JSON
                 </Button>
@@ -119,17 +119,30 @@ const JsonFormatter: React.FC = () => {
                 <Button variant="contained" onClick={sortJson}>
                     Sort JSON Keys
                 </Button>
-            </Box>
-            <Typography variant="h6" gutterBottom>
-                Formatted JSON:
-            </Typography>
-            <TextField
-                multiline
-                rows={10}
-                fullWidth
-                variant="outlined"
-                value={formattedJson}
-            />
+            </CustomResponsiveBox>
+
+            {/* Error message */}
+            {error && (
+                <Typography color="error" variant="body2" gutterBottom>
+                    {error}
+                </Typography>
+            )}
+
+            {/* Formatted JSON */}
+            {formattedJson && (
+                <>
+                    <Typography variant="h6" gutterBottom>
+                        Formatted JSON:
+                    </Typography>
+                    <TextField
+                        multiline
+                        rows={10}
+                        fullWidth
+                        variant="outlined"
+                        value={formattedJson}
+                    />
+                </>
+            )}
         </Box>
     );
 };

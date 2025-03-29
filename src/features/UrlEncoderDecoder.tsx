@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import CustomResponsiveBox from '@/components/CustomResponsiveBox';
 
-const Base64EncoderDecoder: React.FC = () => {
+const UrlEncoderDecoder: React.FC = () => {
     const [inputData, setInputData] = useState<string>('');
     const [encodedData, setEncodedData] = useState<string>('');
     const [decodedData, setDecodedData] = useState<string>('');
     const [error, setError] = useState<string>('');
 
-    // Encode input data to Base64
+    // Encode input data to URL-encoded format
     const handleEncode = () => {
         try {
             setDecodedData('');
-            const encoded = btoa(inputData); // Encode to Base64
+            const encoded = encodeURIComponent(inputData); // URL Encode
             setEncodedData(encoded);
             setError('');
         } catch (error) {
-            console.log(error)
+            console.error(error);
             setError('Error encoding data');
         }
     };
 
-    // Decode Base64 data
+    // Decode URL-encoded data
     const handleDecode = () => {
         try {
             setEncodedData('');
-            const decoded = atob(inputData); // Decode from Base64
+            const decoded = decodeURIComponent(inputData); // URL Decode
             setDecodedData(decoded);
             setError('');
         } catch (error) {
-            console.log(error)
+            console.error(error);
             setError('Error decoding data');
         }
     };
@@ -36,7 +37,7 @@ const Base64EncoderDecoder: React.FC = () => {
     return (
         <Box sx={{ padding: 4 }}>
             <Typography variant="h4" gutterBottom>
-                Base64 Encoder/Decoder
+                URL Encoder/Decoder
             </Typography>
 
             {/* Textfield for input data */}
@@ -52,22 +53,14 @@ const Base64EncoderDecoder: React.FC = () => {
             />
 
             {/* Buttons to trigger encoding and decoding */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: 2,
-                    marginBottom: 2,
-                    flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
-                    alignItems: { xs: 'stretch', sm: 'center' }, // Stretch buttons to full width on mobile
-                }}>
+            <CustomResponsiveBox>
                 <Button variant="contained" onClick={handleEncode}>
-                    Encode to Base64
+                    Encode to URL
                 </Button>
                 <Button variant="contained" onClick={handleDecode}>
-                    Decode from Base64
+                    Decode from URL
                 </Button>
-            </Box>
+            </CustomResponsiveBox>
 
             {/* Error message */}
             {error && (
@@ -113,4 +106,4 @@ const Base64EncoderDecoder: React.FC = () => {
     );
 };
 
-export default Base64EncoderDecoder;
+export default UrlEncoderDecoder

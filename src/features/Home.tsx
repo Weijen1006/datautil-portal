@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import { APP_NAME, LOGO_PATH } from '@/configs/constant';
 
 const Home: React.FC = () => {
     return (
@@ -17,7 +18,7 @@ const Home: React.FC = () => {
             {/* Logo with styling */}
             <Box
                 component="img"
-                src="logo.png"
+                src={LOGO_PATH}
                 alt="Logo"
                 sx={{
                     width: 120,
@@ -28,12 +29,12 @@ const Home: React.FC = () => {
 
             {/* Main Heading */}
             <Typography variant="h3" sx={{ fontWeight: 600, marginBottom: 2 }}>
-                Welcome to DataUtil Portal
+                Welcome to {APP_NAME}
             </Typography>
 
             {/* Subtitle */}
             <Typography variant="h6" sx={{ maxWidth: '600px', opacity: 0.9, marginBottom: 3 }}>
-                Your go-to suite for powerful data utilities—JSON, Base64, JWT and much more.
+                Your go-to suite for powerful data utilities—JSON, Base64, JWT and more.
             </Typography>
 
             {/* Description */}
