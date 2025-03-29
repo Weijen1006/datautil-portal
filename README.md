@@ -21,7 +21,6 @@ Before setting up the project, ensure you have the following installed:
 datautil-portal/
 ├── .gitignore                  # Git ignore file to exclude unwanted files from version control
 ├── eslint.config.js            # ESLint configuration for JavaScript/TypeScript linting
-├── folder_structure1.txt       # Text file documenting folder structure
 ├── index.html                  # Main HTML file
 ├── package-lock.json           # Automatically generated for any operations where npm modifies the node_modules directory
 ├── package.json                # Contains metadata relevant to the project and its dependencies
