@@ -53,8 +53,8 @@ const SecretGenerator: React.FC = () => {
             {/* Input for secret length */}
             <TextField
                 label="Secret Length"
+                defaultValue={secretLength}
                 type="number"
-                value={secretLength}
                 onChange={(e) => setSecretLength(Number(e.target.value))}
                 fullWidth
                 variant="outlined"
@@ -104,8 +104,12 @@ const SecretGenerator: React.FC = () => {
                     <TextField
                         value={generatedSecret}
                         fullWidth
+                        multiline
+                        rows={6}
                         variant="outlined"
-                        sx={{ marginBottom: 2 }}
+                        sx={{
+                            marginBottom: 2
+                        }}
                     />
                 </>
             )}

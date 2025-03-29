@@ -14,6 +14,7 @@ const NumberSystemConverter: React.FC = () => {
         try {
             if (!inputValue) {
                 setError('Please enter a value to convert.');
+                setConvertedValue('');
                 return;
             }
 
@@ -35,6 +36,7 @@ const NumberSystemConverter: React.FC = () => {
 
             if (isNaN(decimalValue)) {
                 setError('Invalid number input for the given base.');
+                setConvertedValue('');
                 return;
             }
 
@@ -56,6 +58,7 @@ const NumberSystemConverter: React.FC = () => {
         } catch (error) {
             console.error(error);
             setError('Error during conversion.');
+            setConvertedValue('');
         }
     };
 
@@ -80,7 +83,10 @@ const NumberSystemConverter: React.FC = () => {
                 <InputLabel>Input Base</InputLabel>
                 <Select
                     value={inputBase}
-                    onChange={(e) => setInputBase(e.target.value as string)}
+                    onChange={(e) => {
+                        setInputBase(e.target.value as string);
+                        setConvertedValue('');
+                    }}
                     label="Input Base"
                 >
                     <MenuItem value="decimal">Decimal</MenuItem>
@@ -95,7 +101,10 @@ const NumberSystemConverter: React.FC = () => {
                 <InputLabel>Output Base</InputLabel>
                 <Select
                     value={outputBase}
-                    onChange={(e) => setOutputBase(e.target.value as string)}
+                    onChange={(e) => {
+                        setOutputBase(e.target.value as string);
+                        setConvertedValue('');
+                    }}
                     label="Output Base"
                 >
                     <MenuItem value="decimal">Decimal</MenuItem>
