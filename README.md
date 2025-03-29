@@ -4,10 +4,10 @@ Welcome to **DataUtil Portal**, your go-to suite for powerful data utilities—J
 
 ## Tech Stack
 
-- **Frontend**: React.js
-- **Build Tool**: Vite
-- **UI Framework**: MaterialUI
-- **Hosting**: GitHub Pages
+- **Frontend**: [React.js](https://react.dev/) + [Typescript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vite.dev/)
+- **UI Framework**: [MaterialUI](https://mui.com/material-ui/)
+- **Hosting**: [GitHub Pages](https://pages.github.com/)
 
 ## Prerequisites
 
