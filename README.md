@@ -20,6 +20,10 @@ Before setting up the project, ensure you have the following installed:
 ```graphql
 datautil-portal/
 ├── .gitignore                  # Git ignore file to exclude unwanted files from version control
+├── cypress.config.ts           # Configuration file for Cypress, used to define settings and plugins for end-to-end testing
+├── cypress/                    # Directory containing Cypress-related files
+│   ├── e2e/                    # Folder containing E2E test cases
+│   └── support/                # Contains custom commands, utilities, and setup code for Cypress tests
 ├── eslint.config.js            # ESLint configuration for JavaScript/TypeScript linting
 ├── index.html                  # Main HTML file
 ├── package-lock.json           # Automatically generated for any operations where npm modifies the node_modules directory
@@ -37,7 +41,7 @@ datautil-portal/
     ├── main.tsx                # Main entry point for the app
     ├── vite-env.d.ts           # Vite TypeScript environment declaration
     ├── components/             # Folder containing reusable React components used throughout the app
-    ├── configs/                # Folder containing configuration files 
+    ├── configs/                # Folder containing configuration files
     │   └── constant.ts         # Constants for the application
     ├── features/               # Folder for feature-specific code, e.g., components and services related to a specific app feature
     ├── layouts/                # Layout components for structuring pages or sections
@@ -54,7 +58,7 @@ datautil-portal/
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/your-username/datautil-portal.git
+git clone https://github.com/Weijen1006/datautil-portal.git
 cd datautil-portal
 ```
 2. **Install dependencies**:
@@ -72,6 +76,23 @@ To run the app in development mode, use:
 npm run dev
 ```
 This will start the development server and open the app in your browser.
+
+## Cypress E2E Testing
+1. **Open Cypress Test Runner**:
+
+Make sure the development server is running (npm run dev), then in a separate terminal:
+
+```bash
+npx cypress open
+```
+This will launch the Cypress Test Runner. You can select your tests from the cypress/e2e folder (e.g., jsonFormatter.cy.ts) and run them in an interactive browser.
+
+2. **Run tests in headless mode (CI or CLI)**:
+
+```bash
+npx cypress run
+```
+This will execute all .cy.ts test files in the cypress/e2e folder in headless mode.
 
 ## Deployment
 1. **Build the project**:

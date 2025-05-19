@@ -93,6 +93,7 @@ const JsonFormatter: React.FC = () => {
                 JSON Formatter
             </Typography>
             <TextField
+                data-cy="json-input"
                 label="Enter JSON"
                 multiline
                 rows={6}
@@ -104,19 +105,19 @@ const JsonFormatter: React.FC = () => {
             />
             {/* Buttons to trigger JSON actions */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={formatJson}>
+                <Button data-cy="format-json" variant="contained" onClick={formatJson}>
                     Format JSON
                 </Button>
-                <Button variant="contained" onClick={serializeJson}>
+                <Button data-cy="serialize-json" variant="contained" onClick={serializeJson}>
                     Serialize JSON
                 </Button>
-                <Button variant="contained" onClick={escapeJson}>
+                <Button data-cy="escape-json" variant="contained" onClick={escapeJson}>
                     Escape Characters
                 </Button>
-                <Button variant="contained" onClick={unescapeJson}>
+                <Button data-cy="unescape-json" variant="contained" onClick={unescapeJson}>
                     Unescape Characters
                 </Button>
-                <Button variant="contained" onClick={sortJson}>
+                <Button data-cy="sort-json" variant="contained" onClick={sortJson}>
                     Sort JSON Keys
                 </Button>
             </CustomResponsiveBox>
@@ -135,6 +136,7 @@ const JsonFormatter: React.FC = () => {
                         Formatted JSON:
                     </Typography>
                     <TextField
+                        data-cy="json-output"
                         multiline
                         rows={10}
                         fullWidth
