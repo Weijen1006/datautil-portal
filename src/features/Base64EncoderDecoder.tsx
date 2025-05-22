@@ -42,6 +42,7 @@ const Base64EncoderDecoder: React.FC = () => {
 
             {/* Textfield for input data */}
             <TextField
+                data-cy="base64-input"
                 label="Enter Data"
                 multiline
                 rows={6}
@@ -54,17 +55,17 @@ const Base64EncoderDecoder: React.FC = () => {
 
             {/* Buttons to trigger encoding and decoding */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={handleEncode}>
+                <Button data-cy="base64-encode" variant="contained" onClick={handleEncode}>
                     Encode to Base64
                 </Button>
-                <Button variant="contained" onClick={handleDecode}>
+                <Button data-cy="base64-decode" variant="contained" onClick={handleDecode}>
                     Decode from Base64
                 </Button>
             </CustomResponsiveBox>
 
             {/* Error message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="base64-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -76,6 +77,7 @@ const Base64EncoderDecoder: React.FC = () => {
                         Encoded Data:
                     </Typography>
                     <TextField
+                        data-cy="base64-encoded-output"
                         multiline
                         rows={6}
                         fullWidth
@@ -93,6 +95,7 @@ const Base64EncoderDecoder: React.FC = () => {
                         Decoded Data:
                     </Typography>
                     <TextField
+                        data-cy="base64-decoded-output"
                         multiline
                         rows={6}
                         fullWidth

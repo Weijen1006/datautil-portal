@@ -12,9 +12,7 @@ describe('JSON Formatter', () => {
 }`;
 
   beforeEach(() => {
-    // cy.visit('http://localhost:5173/datautil-portal/');
-    cy.visit('https://weijen1006.github.io/datautil-portal/');
-    cy.get('button').contains('JSON').click();
+    cy.login('JSON');
   });
 
   it('formats valid JSON correctly', () => {
@@ -59,6 +57,6 @@ describe('JSON Formatter', () => {
   it('shows error on invalid JSON', () => {
     cy.get('[data-cy="json-input"]').type('{ invalid JSON }', { parseSpecialCharSequences: false });
     cy.get('[data-cy="format-json"]').click();
-    cy.contains('Invalid JSON').should('be.visible');
+    cy.get('[data-cy="json-error"]').should('have.text', 'Invalid JSON');
   });
 });

@@ -124,7 +124,7 @@ const JsonFormatter: React.FC = () => {
 
             {/* Error message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="json-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}

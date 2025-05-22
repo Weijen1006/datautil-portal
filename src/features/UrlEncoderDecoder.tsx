@@ -42,6 +42,7 @@ const UrlEncoderDecoder: React.FC = () => {
 
             {/* Textfield for input data */}
             <TextField
+                data-cy="url-input"
                 label="Enter Data"
                 multiline
                 rows={6}
@@ -54,17 +55,17 @@ const UrlEncoderDecoder: React.FC = () => {
 
             {/* Buttons to trigger encoding and decoding */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={handleEncode}>
+                <Button data-cy="url-encode" variant="contained" onClick={handleEncode}>
                     Encode to URL
                 </Button>
-                <Button variant="contained" onClick={handleDecode}>
+                <Button data-cy="url-decode" variant="contained" onClick={handleDecode}>
                     Decode from URL
                 </Button>
             </CustomResponsiveBox>
 
             {/* Error message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="url-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -76,6 +77,7 @@ const UrlEncoderDecoder: React.FC = () => {
                         Encoded Data:
                     </Typography>
                     <TextField
+                        data-cy="url-encoded-output"
                         multiline
                         rows={6}
                         fullWidth
@@ -93,6 +95,7 @@ const UrlEncoderDecoder: React.FC = () => {
                         Decoded Data:
                     </Typography>
                     <TextField
+                        data-cy="url-decoded-output"
                         multiline
                         rows={6}
                         fullWidth

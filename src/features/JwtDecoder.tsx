@@ -45,6 +45,7 @@ const JwtDecoder: React.FC = () => {
 
             {/* Textfield for JWT input */}
             <TextField
+                data-cy="jwt-input"
                 label="Enter JWT"
                 multiline
                 rows={6}
@@ -57,14 +58,14 @@ const JwtDecoder: React.FC = () => {
 
             {/* Decode button */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={() => decodeJwt(jwt)}>
+                <Button data-cy="jwt-decode" variant="contained" onClick={() => decodeJwt(jwt)}>
                     Decode JWT
                 </Button>
             </CustomResponsiveBox>
 
             {/* Error message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="jwt-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -76,6 +77,7 @@ const JwtDecoder: React.FC = () => {
                         Header:
                     </Typography>
                     <TextField
+                        data-cy="jwt-header-output"
                         multiline
                         rows={6}
                         fullWidth
@@ -93,6 +95,7 @@ const JwtDecoder: React.FC = () => {
                         Payload:
                     </Typography>
                     <TextField
+                        data-cy="jwt-payload-output"
                         multiline
                         rows={6}
                         fullWidth

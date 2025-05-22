@@ -66,7 +66,7 @@ const MainContent: React.FC = () => {
                 <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="tab functionality">
                     {/* Dynamically render tabs from the tabData array */}
                     {tabData.map((tab, index) => (
-                        <Tab icon={tab.icon} iconPosition='start' key={index} label={tab.label} />
+                        <Tab data-cy={tab.label} icon={tab.icon} iconPosition='start' key={index} label={tab.label} />
                     ))}
                 </Tabs>
             </Box>
