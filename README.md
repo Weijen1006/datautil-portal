@@ -7,6 +7,7 @@ Welcome to **DataUtil Portal**, your go-to suite for powerful data utilities—J
 - **Frontend**: [React.js](https://react.dev/) + [Typescript](https://www.typescriptlang.org/)
 - **Build Tool**: [Vite](https://vite.dev/)
 - **UI Framework**: [MaterialUI](https://mui.com/material-ui/)
+- **E2E Testing**:[Cypress](https://www.cypress.io/)
 - **Hosting**: [GitHub Pages](https://pages.github.com/)
 
 ## Prerequisites
