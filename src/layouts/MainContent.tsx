@@ -10,6 +10,7 @@ import FunctionsIcon from '@mui/icons-material/Functions';
 import KeyIcon from '@mui/icons-material/Key';
 import NumbersIcon from '@mui/icons-material/Numbers';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import HtmlIcon from '@mui/icons-material/Html';
 import Home from '@/features/Home'
 import JsonFormatter from '@/features/JsonFormatter';
 import Base64EncoderDecoder from '@/features/Base64EncoderDecoder';
@@ -20,6 +21,7 @@ import RegexTool from '@/features/RegexTool';
 import SecretGenerator from '@/features/SecretGenerator';
 import NumberSystemConverter from '@/features/NumberSystemConverter';
 import TimestampConverter from '@/features/TimestampConverter';
+import HtmlViewer from '@/features/HtmlViewer';
 
 // Define the type for the tab data
 interface TabData {
@@ -35,6 +37,7 @@ const tabData: TabData[] = [
     { label: 'JSON', icon: <DataObjectIcon />, children: <JsonFormatter /> },
     { label: 'Base64', icon: <EnhancedEncryptionIcon />, children: <Base64EncoderDecoder /> },
     { label: 'URL', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
+    { label: 'HTML', icon: <HtmlIcon />, children: <HtmlViewer /> },
     { label: 'JWT', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
     { label: 'Regex', icon: <FunctionsIcon />, children: <RegexTool /> },
     { label: 'SecretGen', icon: <KeyIcon />, children: <SecretGenerator /> },
