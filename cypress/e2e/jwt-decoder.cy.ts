@@ -36,6 +36,9 @@ describe("JWT Decoder", () => {
       parseSpecialCharSequences: false,
     });
     cy.get('[data-cy="jwt-decode"]').click();
-    cy.get('[data-cy="jwt-error"]').should("have.text", "Invalid JWT format or unable to decode");
+    cy.get('[data-cy="jwt-error"]').should(
+      "have.text",
+      "Invalid JWT format or unable to decode"
+    );
   });
 });

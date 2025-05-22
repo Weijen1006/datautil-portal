@@ -28,6 +28,7 @@ const HtmlViewer: React.FC = () => {
 
             {/* Textfield for HTML input */}
             <TextField
+                data-cy="html-input"
                 label="Enter HTML"
                 multiline
                 rows={6}
@@ -45,7 +46,7 @@ const HtmlViewer: React.FC = () => {
 
             {/* Error Message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="html-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -62,6 +63,7 @@ const HtmlViewer: React.FC = () => {
                     }}
                 >
                     <iframe
+                        data-cy="html-output"
                         title="Rendered HTML"
                         srcDoc={iframeSrcDoc} // Inject the HTML content directly into the iframe
                         width="100%"

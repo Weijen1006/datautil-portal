@@ -52,6 +52,7 @@ const SecretGenerator: React.FC = () => {
 
             {/* Input for secret length */}
             <TextField
+                data-cy="secret-length-input"
                 label="Secret Length"
                 defaultValue={secretLength}
                 type="number"
@@ -64,33 +65,33 @@ const SecretGenerator: React.FC = () => {
             {/* Checkbox for character sets */}
             <Box sx={{ marginBottom: 2 }}>
                 <FormControlLabel
-                    control={<Checkbox checked={includeLowercase} onChange={() => setIncludeLowercase(!includeLowercase)} />}
+                    control={<Checkbox data-cy="include-lowercase" checked={includeLowercase} onChange={() => setIncludeLowercase(!includeLowercase)} />}
                     label="Include Lowercase"
                 />
                 <FormControlLabel
-                    control={<Checkbox checked={includeUppercase} onChange={() => setIncludeUppercase(!includeUppercase)} />}
+                    control={<Checkbox data-cy="include-uppercase" checked={includeUppercase} onChange={() => setIncludeUppercase(!includeUppercase)} />}
                     label="Include Uppercase"
                 />
                 <FormControlLabel
-                    control={<Checkbox checked={includeNumbers} onChange={() => setIncludeNumbers(!includeNumbers)} />}
+                    control={<Checkbox data-cy="include-number" checked={includeNumbers} onChange={() => setIncludeNumbers(!includeNumbers)} />}
                     label="Include Numbers"
                 />
                 <FormControlLabel
-                    control={<Checkbox checked={includeSpecialChars} onChange={() => setIncludeSpecialChars(!includeSpecialChars)} />}
+                    control={<Checkbox data-cy="include-special-character" checked={includeSpecialChars} onChange={() => setIncludeSpecialChars(!includeSpecialChars)} />}
                     label="Include Special Characters"
                 />
             </Box>
 
             {/* Button to generate secret */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={generateSecret}>
+                <Button data-cy="generate-secret" variant="contained" onClick={generateSecret}>
                     Generate Secret
                 </Button>
             </CustomResponsiveBox>
 
             {/* Error message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="secret-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -102,6 +103,7 @@ const SecretGenerator: React.FC = () => {
                         Generated Secret:
                     </Typography>
                     <TextField
+                        data-cy="secret-output"
                         value={generatedSecret}
                         fullWidth
                         multiline

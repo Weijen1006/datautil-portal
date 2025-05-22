@@ -37,6 +37,7 @@ const RegexTool: React.FC = () => {
 
             {/* Textfield for regex pattern */}
             <TextField
+                data-cy="regex-input"
                 label="Enter Regex Pattern"
                 multiline
                 rows={6}
@@ -49,6 +50,7 @@ const RegexTool: React.FC = () => {
 
             {/* Textfield for test string */}
             <TextField
+                data-cy="regex-test-input"
                 label="Enter Test String"
                 multiline
                 rows={6}
@@ -61,14 +63,14 @@ const RegexTool: React.FC = () => {
 
             {/* Button to trigger regex test */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={handleTestRegex}>
+                <Button data-cy="test-regex" variant="contained" onClick={handleTestRegex}>
                     Test Regex
                 </Button>
             </CustomResponsiveBox>
 
             {/* Error message for invalid regex */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="regex-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -80,6 +82,7 @@ const RegexTool: React.FC = () => {
                         Matches:
                     </Typography>
                     <TextField
+                        data-cy="regex-matches-output"
                         multiline
                         rows={6}
                         fullWidth
@@ -92,7 +95,7 @@ const RegexTool: React.FC = () => {
 
             {/* Message if no matches found */}
             {matches.length === 0 && testString && (
-                <Typography variant="body2" color="textSecondary">
+                <Typography data-cy="regex-no-match" variant="body2" color="textSecondary">
                     No matches found.
                 </Typography>
             )}

@@ -28,17 +28,17 @@ const Home: React.FC = () => {
             />
 
             {/* Main Heading */}
-            <Typography variant="h3" sx={{ fontWeight: 600, marginBottom: 2 }}>
+            <Typography data-cy="home-title" variant="h3" sx={{ fontWeight: 600, marginBottom: 2 }}>
                 Welcome to {APP_NAME}
             </Typography>
 
             {/* Subtitle */}
-            <Typography variant="h6" sx={{ maxWidth: '600px', opacity: 0.9, marginBottom: 3 }}>
+            <Typography data-cy="home-subtitle" variant="h6" sx={{ maxWidth: '600px', opacity: 0.9, marginBottom: 3 }}>
                 Your go-to suite for powerful data utilities—JSON, Base64, JWT and more.
             </Typography>
 
             {/* Description */}
-            <Typography variant="body1" sx={{ maxWidth: '600px', opacity: 0.8, marginBottom: 4 }}>
+            <Typography data-cy="home-description" variant="body1" sx={{ maxWidth: '600px', opacity: 0.8, marginBottom: 4 }}>
                 Simplify your workflow with easy-to-use tools, built for developers, data analysts, and tech enthusiasts.
             </Typography>
         </Box>

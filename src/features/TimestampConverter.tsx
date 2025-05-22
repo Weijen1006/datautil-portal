@@ -32,6 +32,7 @@ const TimestampConverter: React.FC = () => {
 
             {/* Textfield for Timestamp input */}
             <TextField
+                data-cy="timestamp-input"
                 label="Enter Unix Timestamp (seconds)"
                 fullWidth
                 variant="outlined"
@@ -49,7 +50,7 @@ const TimestampConverter: React.FC = () => {
 
             {/* Error message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="timestamp-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -61,6 +62,7 @@ const TimestampConverter: React.FC = () => {
                         Converted Date:
                     </Typography>
                     <TextField
+                        data-cy="timestamp-output"
                         multiline
                         rows={2}
                         fullWidth

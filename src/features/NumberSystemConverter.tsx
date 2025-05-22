@@ -70,6 +70,7 @@ const NumberSystemConverter: React.FC = () => {
 
             {/* Input for value to convert */}
             <TextField
+                data-cy="number-input"
                 label={`Enter Value (${inputBase})`}
                 variant="outlined"
                 value={inputValue}
@@ -82,6 +83,7 @@ const NumberSystemConverter: React.FC = () => {
             <FormControl fullWidth sx={{ marginBottom: 2 }}>
                 <InputLabel>Input Base</InputLabel>
                 <Select
+                    data-cy="convert-input-base"
                     value={inputBase}
                     onChange={(e) => {
                         setInputBase(e.target.value as string);
@@ -89,10 +91,10 @@ const NumberSystemConverter: React.FC = () => {
                     }}
                     label="Input Base"
                 >
-                    <MenuItem value="decimal">Decimal</MenuItem>
-                    <MenuItem value="hex">Hexadecimal</MenuItem>
-                    <MenuItem value="binary">Binary</MenuItem>
-                    <MenuItem value="octal">Octal</MenuItem>
+                    <MenuItem data-cy="convert-input-decimal" value="decimal">Decimal</MenuItem>
+                    <MenuItem data-cy="convert-input-hexadecimal" value="hex">Hexadecimal</MenuItem>
+                    <MenuItem data-cy="convert-input-binary" value="binary">Binary</MenuItem>
+                    <MenuItem data-cy="convert-input-octal" value="octal">Octal</MenuItem>
                 </Select>
             </FormControl>
 
@@ -100,6 +102,7 @@ const NumberSystemConverter: React.FC = () => {
             <FormControl fullWidth sx={{ marginBottom: 2 }}>
                 <InputLabel>Output Base</InputLabel>
                 <Select
+                    data-cy="convert-output-base"
                     value={outputBase}
                     onChange={(e) => {
                         setOutputBase(e.target.value as string);
@@ -107,23 +110,23 @@ const NumberSystemConverter: React.FC = () => {
                     }}
                     label="Output Base"
                 >
-                    <MenuItem value="decimal">Decimal</MenuItem>
-                    <MenuItem value="hex">Hexadecimal</MenuItem>
-                    <MenuItem value="binary">Binary</MenuItem>
-                    <MenuItem value="octal">Octal</MenuItem>
+                    <MenuItem data-cy="convert-output-decimal" value="decimal">Decimal</MenuItem>
+                    <MenuItem data-cy="convert-output-hexadecimal" value="hex">Hexadecimal</MenuItem>
+                    <MenuItem data-cy="convert-output-binary" value="binary">Binary</MenuItem>
+                    <MenuItem data-cy="convert-output-octal" value="octal">Octal</MenuItem>
                 </Select>
             </FormControl>
 
             {/* Convert Button */}
             <CustomResponsiveBox>
-                <Button variant="contained" onClick={convertNumber} sx={{ marginBottom: 2 }}>
+                <Button data-cy="convert-number" variant="contained" onClick={convertNumber} sx={{ marginBottom: 2 }}>
                     Convert
                 </Button>
             </CustomResponsiveBox>
 
             {/* Error Message */}
             {error && (
-                <Typography color="error" variant="body2" gutterBottom>
+                <Typography data-cy="convert-number-error" color="error" variant="body2" gutterBottom>
                     {error}
                 </Typography>
             )}
@@ -135,6 +138,7 @@ const NumberSystemConverter: React.FC = () => {
                         Converted Value ({outputBase}):
                     </Typography>
                     <TextField
+                        data-cy="convert-number-output"
                         value={convertedValue}
                         fullWidth
                         variant="outlined"

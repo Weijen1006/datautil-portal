@@ -75,6 +75,7 @@ const DiffChecker: React.FC = () => {
         {/* First TextField */}
         <Grid size={6}>
           <TextField
+            data-cy="text1-input"
             label="Text 1"
             multiline
             rows={12}
@@ -89,6 +90,7 @@ const DiffChecker: React.FC = () => {
         {/* Second TextField */}
         <Grid size={6}>
           <TextField
+            data-cy="text2-input"
             label="Text 2"
             multiline
             rows={12}
@@ -103,10 +105,10 @@ const DiffChecker: React.FC = () => {
 
       {/* Compare button */}
       <CustomResponsiveBox>
-        <Button variant="contained" onClick={handleCompareChars} sx={{ marginBottom: 2 }}>
+        <Button data-cy="compare-character" variant="contained" onClick={handleCompareChars} sx={{ marginBottom: 2 }}>
           Compare Characters
         </Button>
-        <Button variant="contained" onClick={handleCompareLines} sx={{ marginBottom: 2 }}>
+        <Button data-cy="compare-line" variant="contained" onClick={handleCompareLines} sx={{ marginBottom: 2 }}>
           Compare Lines
         </Button>
       </CustomResponsiveBox>
@@ -115,12 +117,14 @@ const DiffChecker: React.FC = () => {
       {diffResult.length > 0 && (
         <Box sx={{ marginY: 2, display: 'flex', gap: 1 }}>
           <Typography
+            data-cy="added-count"
             variant="body2"
             sx={{ backgroundColor: 'lightgreen', fontWeight: 'bold', padding: '4px' }}
           >
             {addedCount}<strong> addition</strong>
           </Typography>
           <Typography
+            data-cy="removed-count"
             variant="body2"
             sx={{ backgroundColor: 'lightcoral', fontWeight: 'bold', padding: '4px' }}
           >
@@ -138,6 +142,7 @@ const DiffChecker: React.FC = () => {
           overflowY: 'auto',  // Enable scrolling if content exceeds max height
         }}>
           <Typography
+            data-cy="diff-result"
             variant="body1"
             component="pre"
             sx={{
