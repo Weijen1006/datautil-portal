@@ -17,13 +17,15 @@ const JwtDecoder: React.FC = () => {
         try {
             const [header, payload] = jwt.split('.'); // JWT consists of 3 parts
 
-            if (!header || !payload) {
+            if (!header) {
                 throw new Error('Invalid JWT structure');
             }
 
             // Decode the header and payload parts
             const decodedHeader = JSON.parse(atob(base64UrlToBase64(header)));
-            const decodedPayload = JSON.parse(atob(base64UrlToBase64(payload)));
+            const decodedPayload = payload
+                ? JSON.parse(atob(base64UrlToBase64(payload)))
+                : {};
 
             // Store the decoded values
             setDecodedHeader(JSON.stringify(decodedHeader, null, 2));
