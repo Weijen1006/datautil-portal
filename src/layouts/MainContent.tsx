@@ -7,6 +7,7 @@ import GeneratingTokensIcon from '@mui/icons-material/GeneratingTokens';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 import LinkIcon from '@mui/icons-material/Link';
 import FunctionsIcon from '@mui/icons-material/Functions';
+import PasswordIcon from '@mui/icons-material/Password';
 import KeyIcon from '@mui/icons-material/Key';
 import NumbersIcon from '@mui/icons-material/Numbers';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -19,6 +20,7 @@ import DiffChecker from '@/features/DiffChecker';
 import UrlEncoderDecoder from '@/features/UrlEncoderDecoder';
 import RegexTool from '@/features/RegexTool';
 import SecretGenerator from '@/features/SecretGenerator';
+import PkceGenerator from '@/features/PkceGenerator';
 import NumberSystemConverter from '@/features/NumberSystemConverter';
 import TimestampConverter from '@/features/TimestampConverter';
 import HtmlViewer from '@/features/HtmlViewer';
@@ -39,10 +41,11 @@ const tabData: TabData[] = [
     { label: 'URL', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
     { label: 'HTML', icon: <HtmlIcon />, children: <HtmlViewer /> },
     { label: 'JWT', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
-    { label: 'Regex', icon: <FunctionsIcon />, children: <RegexTool /> },
-    { label: 'SecretGen', icon: <KeyIcon />, children: <SecretGenerator /> },
+    { label: 'SecretGen', icon: <PasswordIcon />, children: <SecretGenerator /> },
+    { label: 'PKCE', icon: <KeyIcon />, children: <PkceGenerator /> },
     { label: 'Number', icon: <NumbersIcon />, children: <NumberSystemConverter /> },
-    { label: 'TimeStamp', icon: <AccessTimeIcon />, children: <TimestampConverter />, }
+    { label: 'TimeStamp', icon: <AccessTimeIcon />, children: <TimestampConverter />, },
+    { label: 'Regex', icon: <FunctionsIcon />, children: <RegexTool /> },
 ];
 
 // Function to implement the component
