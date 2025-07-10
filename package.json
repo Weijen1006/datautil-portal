@@ -17,6 +17,7 @@
     "@mui/icons-material": "^7.0.0",
     "@mui/material": "^7.0.0",
     "diff": "^7.0.0",
+    "json5": "^2.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -1,14 +1,34 @@
 describe("JSON Formatter", () => {
-  const sampleJson = `{"name":"John","age":30,"city":"New York"}`;
+  const sampleJson = `{"unquoted":"and you can quote me on that","singleQuotes":"I can use \\"double quotes\\" here","lineBreaks":"Look, Mom! No \\\\n's!","hexadecimal":912559,"leadingDecimalPoint":0.8675309,"andTrailing":8675309,"positiveSign":1,"trailingComma":"in objects","andIn":["arrays"],"backwardsCompatible":"with JSON"}`;
+
   const prettyJson = `{
-  "name": "John",
-  "age": 30,
-  "city": "New York"
+  "unquoted": "and you can quote me on that",
+  "singleQuotes": "I can use \\"double quotes\\" here",
+  "lineBreaks": "Look, Mom! No \\\\n's!",
+  "hexadecimal": 912559,
+  "leadingDecimalPoint": 0.8675309,
+  "andTrailing": 8675309,
+  "positiveSign": 1,
+  "trailingComma": "in objects",
+  "andIn": [
+    "arrays"
+  ],
+  "backwardsCompatible": "with JSON"
 }`;
+
   const sortedJson = `{
-  "age": 30,
-  "city": "New York",
-  "name": "John"
+  "andIn": [
+    "arrays"
+  ],
+  "andTrailing": 8675309,
+  "backwardsCompatible": "with JSON",
+  "hexadecimal": 912559,
+  "leadingDecimalPoint": 0.8675309,
+  "lineBreaks": "Look, Mom! No \\\\n's!",
+  "positiveSign": 1,
+  "singleQuotes": "I can use \\"double quotes\\" here",
+  "trailingComma": "in objects",
+  "unquoted": "and you can quote me on that"
 }`;
 
   beforeEach(() => {
@@ -46,12 +66,13 @@ describe("JSON Formatter", () => {
       .replace(/\n/g, "\\n")
       .replace(/\r/g, "\\r")
       .replace(/\t/g, "\\t");
+    const unescapedJson = `{"unquoted":"and you can quote me on that","singleQuotes":"I can use \\"double quotes\\" here","lineBreaks":"Look, Mom! No \\\n's!","hexadecimal":912559,"leadingDecimalPoint":0.8675309,"andTrailing":8675309,"positiveSign":1,"trailingComma":"in objects","andIn":["arrays"],"backwardsCompatible":"with JSON"}`;
 
     cy.get('[data-cy="json-input"]')
       .clear()
       .type(escapedJson, { parseSpecialCharSequences: false });
     cy.get('[data-cy="unescape-json"]').click();
-    cy.get('[data-cy="json-output"] textarea').should("have.value", sampleJson);
+    cy.get('[data-cy="json-output"] textarea').should("have.value", unescapedJson);
   });
 
   it("sorts JSON keys alphabetically", () => {

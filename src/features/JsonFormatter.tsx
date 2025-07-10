@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 import CustomResponsiveBox from '@/components/CustomResponsiveBox';
+import JSON5 from 'json5';
 
 const JsonFormatter: React.FC = () => {
     const [inputJson, setInputJson] = useState<string>('');
@@ -10,7 +11,7 @@ const JsonFormatter: React.FC = () => {
     // Format JSON (pretty print)
     const formatJson = () => {
         try {
-            const parsed = JSON.parse(inputJson);
+            const parsed = JSON5.parse(inputJson); // Can parse JS-style objects
             const formatted = JSON.stringify(parsed, null, 2); // Indent with 2 spaces
             setFormattedJson(formatted);
             setError('')
@@ -24,7 +25,7 @@ const JsonFormatter: React.FC = () => {
     // Serialize JSON (to string without pretty print)
     const serializeJson = () => {
         try {
-            const parsed = JSON.parse(inputJson);
+            const parsed = JSON5.parse(inputJson);
             const serialized = JSON.stringify(parsed); // Convert JSON object to string
             setFormattedJson(serialized);
         } catch (error) {
@@ -71,7 +72,7 @@ const JsonFormatter: React.FC = () => {
     // Sort JSON keys alphabetically
     const sortJson = () => {
         try {
-            const parsed = JSON.parse(inputJson);
+            const parsed = JSON5.parse(inputJson);
             const sorted = Object.keys(parsed)
                 .sort()
                 .reduce((acc: Record<string, unknown>, key) => {
