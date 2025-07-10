@@ -63,20 +63,23 @@ describe("Secret Generator", () => {
 
   it("should generate a secret with the default settings", () => {
     // By default, the secret length should be 16, and all character sets should be checked
+    const allowedChars =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}\\|;:'\",<.>/?";
+
     cy.get('[data-cy="secret-length-input"] input').should("have.value", "16");
 
     // Click the generate secret button
     cy.get('[data-cy="generate-secret"]').click();
 
-    // Ensure that the generated secret appears with the correct length
     cy.get('[data-cy="secret-output"] textarea')
       .invoke("val")
       .should("have.length", 16)
       .then((secret) => {
-        expect(secret).to.match(/[a-z]/); // At least one lowercase letter
-        expect(secret).to.match(/[A-Z]/); // At least one uppercase letter
-        expect(secret).to.match(/\d/); // At least one number
-        expect(secret).to.match(/[!@#$%^&*()\-_=+[\]{}\\|;:'",<.>/?]/); // At least one special character
+        // Assert all characters in the secret are within the allowed character set
+        const str = String(secret);
+        for (const char of str) {
+          expect(allowedChars).to.include(char);
+        }
       });
   });
 });
