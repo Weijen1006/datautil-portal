@@ -16,10 +16,14 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.0.0",
     "@mui/material": "^7.0.0",
+    "@mui/x-date-pickers": "^8.7.0",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
     "diff": "^7.0.0",
     "json5": "^2.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "timezones-list": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

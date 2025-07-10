@@ -10,6 +10,7 @@ import FunctionsIcon from '@mui/icons-material/Functions';
 import PasswordIcon from '@mui/icons-material/Password';
 import KeyIcon from '@mui/icons-material/Key';
 import NumbersIcon from '@mui/icons-material/Numbers';
+import PublicIcon from '@mui/icons-material/Public';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HtmlIcon from '@mui/icons-material/Html';
 import Home from '@/features/Home'
@@ -22,6 +23,7 @@ import RegexTool from '@/features/RegexTool';
 import SecretGenerator from '@/features/SecretGenerator';
 import PkceGenerator from '@/features/PkceGenerator';
 import NumberSystemConverter from '@/features/NumberSystemConverter';
+import TimeZoneConverter from '@/features/TimeZoneConverter';
 import TimestampConverter from '@/features/TimestampConverter';
 import HtmlViewer from '@/features/HtmlViewer';
 
@@ -41,10 +43,11 @@ const tabData: TabData[] = [
     { label: 'URL', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
     { label: 'HTML', icon: <HtmlIcon />, children: <HtmlViewer /> },
     { label: 'JWT', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
+    { label: 'TimeZone', icon: <PublicIcon />, children: <TimeZoneConverter />, },
+    { label: 'TimeStamp', icon: <AccessTimeIcon />, children: <TimestampConverter />, },
     { label: 'SecretGen', icon: <PasswordIcon />, children: <SecretGenerator /> },
     { label: 'PKCE', icon: <KeyIcon />, children: <PkceGenerator /> },
     { label: 'Number', icon: <NumbersIcon />, children: <NumberSystemConverter /> },
-    { label: 'TimeStamp', icon: <AccessTimeIcon />, children: <TimestampConverter />, },
     { label: 'Regex', icon: <FunctionsIcon />, children: <RegexTool /> },
 ];
 
