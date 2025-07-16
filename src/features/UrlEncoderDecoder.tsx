@@ -56,10 +56,10 @@ const UrlEncoderDecoder: React.FC = () => {
             {/* Buttons to trigger encoding and decoding */}
             <CustomResponsiveBox>
                 <Button data-cy="url-encode" variant="contained" onClick={handleEncode}>
-                    Encode to URL
+                    Encode URL
                 </Button>
                 <Button data-cy="url-decode" variant="contained" onClick={handleDecode}>
-                    Decode from URL
+                    Decode URL
                 </Button>
             </CustomResponsiveBox>
 
