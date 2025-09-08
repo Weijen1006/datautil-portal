@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Tabs, Tab } from '@mui/material';
 import { Routes, Route, useNavigate, useLocation } from 'react-router';
-import { URL_PATH_PREFIX } from '@/configs/constant';
 
 import HomeIcon from '@mui/icons-material/Home';
 import DataObjectIcon from '@mui/icons-material/DataObject';
@@ -42,19 +41,19 @@ interface TabData {
 
 // Tabs metadata
 const tabData: TabData[] = [
-    { label: 'Home', icon: <HomeIcon />, path: `${URL_PATH_PREFIX}/`, element: <Home /> },
-    { label: 'DiffChecker', icon: <LibraryAddCheckIcon />, path: `${URL_PATH_PREFIX}/diff`, element: <DiffChecker /> },
-    { label: 'JSON', icon: <DataObjectIcon />, path: `${URL_PATH_PREFIX}/json`, element: <JsonFormatter /> },
-    { label: 'Base64', icon: <EnhancedEncryptionIcon />, path: `${URL_PATH_PREFIX}/base64`, element: <Base64EncoderDecoder /> },
-    { label: 'URL', icon: <LinkIcon />, path: `${URL_PATH_PREFIX}/url`, element: <UrlEncoderDecoder /> },
-    { label: 'HTML', icon: <HtmlIcon />, path: `${URL_PATH_PREFIX}/html`, element: <HtmlViewer /> },
-    { label: 'JWT', icon: <GeneratingTokensIcon />, path: `${URL_PATH_PREFIX}/jwt`, element: <JwtDecoder /> },
-    { label: 'TimeZone', icon: <PublicIcon />, path: `${URL_PATH_PREFIX}/timezone`, element: <TimeZoneConverter /> },
-    { label: 'TimeStamp', icon: <AccessTimeIcon />, path: `${URL_PATH_PREFIX}/timestamp`, element: <TimestampConverter /> },
-    { label: 'SecretGen', icon: <PasswordIcon />, path: `${URL_PATH_PREFIX}/secret`, element: <SecretGenerator /> },
-    { label: 'PKCE', icon: <KeyIcon />, path: `${URL_PATH_PREFIX}/pkce`, element: <PkceGenerator /> },
-    { label: 'Number', icon: <NumbersIcon />, path: `${URL_PATH_PREFIX}/number`, element: <NumberSystemConverter /> },
-    { label: 'Regex', icon: <FunctionsIcon />, path: `${URL_PATH_PREFIX}/regex`, element: <RegexTool /> },
+    { label: 'Home', icon: <HomeIcon />, path: '/', element: <Home /> },
+    { label: 'DiffChecker', icon: <LibraryAddCheckIcon />, path: '/diff', element: <DiffChecker /> },
+    { label: 'JSON', icon: <DataObjectIcon />, path: '/json', element: <JsonFormatter /> },
+    { label: 'Base64', icon: <EnhancedEncryptionIcon />, path: '/base64', element: <Base64EncoderDecoder /> },
+    { label: 'URL', icon: <LinkIcon />, path: '/url', element: <UrlEncoderDecoder /> },
+    { label: 'HTML', icon: <HtmlIcon />, path: '/html', element: <HtmlViewer /> },
+    { label: 'JWT', icon: <GeneratingTokensIcon />, path: '/jwt', element: <JwtDecoder /> },
+    { label: 'TimeZone', icon: <PublicIcon />, path: '/timezone', element: <TimeZoneConverter /> },
+    { label: 'TimeStamp', icon: <AccessTimeIcon />, path: '/timestamp', element: <TimestampConverter /> },
+    { label: 'SecretGen', icon: <PasswordIcon />, path: '/secret', element: <SecretGenerator /> },
+    { label: 'PKCE', icon: <KeyIcon />, path: '/pkce', element: <PkceGenerator /> },
+    { label: 'Number', icon: <NumbersIcon />, path: '/number', element: <NumberSystemConverter /> },
+    { label: 'Regex', icon: <FunctionsIcon />, path: '/regex', element: <RegexTool /> },
 ];
 
 // Component

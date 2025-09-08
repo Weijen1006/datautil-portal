@@ -5,7 +5,7 @@ import { getItem } from '@/utils/localStorageUtil';
 import { ThemeMode, HexColor } from '@/models/theme';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import MainContent from '@/layouts/MainContent';
-import { BrowserRouter } from 'react-router';
+import { HashRouter } from 'react-router';
 import { APP_NAME, LOGO_PATH, DEFAULT_THEME_MODE, DEFAULT_THEME_COLOR } from '@/configs/constant';
 
 const MainLayout: React.FC = () => {
@@ -32,9 +32,9 @@ const MainLayout: React.FC = () => {
                 </AppBar>
                 {/* Content below AppBar will be scrollable */}
                 <Box sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)' }}>
-                    <BrowserRouter>
+                    <HashRouter>
                         <MainContent />
-                    </BrowserRouter>
+                    </HashRouter>
                 </Box>
             </Box>
         </MuiThemeProvider>
