@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Tabs, Tab } from '@mui/material';
+import { Routes, Route, useNavigate, useLocation } from 'react-router';
+import { URL_PATH_PREFIX } from '@/configs/constant';
+
 import HomeIcon from '@mui/icons-material/Home';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
@@ -13,6 +16,8 @@ import NumbersIcon from '@mui/icons-material/Numbers';
 import PublicIcon from '@mui/icons-material/Public';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HtmlIcon from '@mui/icons-material/Html';
+
+// Your features
 import Home from '@/features/Home'
 import JsonFormatter from '@/features/JsonFormatter';
 import Base64EncoderDecoder from '@/features/Base64EncoderDecoder';
@@ -30,77 +35,82 @@ import HtmlViewer from '@/features/HtmlViewer';
 // Define the type for the tab data
 interface TabData {
     label: string;
-    icon: string | React.ReactElement;
-    children: React.ReactNode;
+    icon: React.ReactElement;
+    path: string;
+    element: React.ReactNode;
 }
 
-// Array containing the data for the tabs
+// Tabs metadata
 const tabData: TabData[] = [
-    { label: 'Home', icon: <HomeIcon />, children: <Home /> },
-    { label: 'DiffChecker', icon: <LibraryAddCheckIcon />, children: <DiffChecker /> },
-    { label: 'JSON', icon: <DataObjectIcon />, children: <JsonFormatter /> },
-    { label: 'Base64', icon: <EnhancedEncryptionIcon />, children: <Base64EncoderDecoder /> },
-    { label: 'URL', icon: <LinkIcon />, children: <UrlEncoderDecoder /> },
-    { label: 'HTML', icon: <HtmlIcon />, children: <HtmlViewer /> },
-    { label: 'JWT', icon: <GeneratingTokensIcon />, children: <JwtDecoder /> },
-    { label: 'TimeZone', icon: <PublicIcon />, children: <TimeZoneConverter />, },
-    { label: 'TimeStamp', icon: <AccessTimeIcon />, children: <TimestampConverter />, },
-    { label: 'SecretGen', icon: <PasswordIcon />, children: <SecretGenerator /> },
-    { label: 'PKCE', icon: <KeyIcon />, children: <PkceGenerator /> },
-    { label: 'Number', icon: <NumbersIcon />, children: <NumberSystemConverter /> },
-    { label: 'Regex', icon: <FunctionsIcon />, children: <RegexTool /> },
+    { label: 'Home', icon: <HomeIcon />, path: `${URL_PATH_PREFIX}/`, element: <Home /> },
+    { label: 'DiffChecker', icon: <LibraryAddCheckIcon />, path: `${URL_PATH_PREFIX}/diff`, element: <DiffChecker /> },
+    { label: 'JSON', icon: <DataObjectIcon />, path: `${URL_PATH_PREFIX}/json`, element: <JsonFormatter /> },
+    { label: 'Base64', icon: <EnhancedEncryptionIcon />, path: `${URL_PATH_PREFIX}/base64`, element: <Base64EncoderDecoder /> },
+    { label: 'URL', icon: <LinkIcon />, path: `${URL_PATH_PREFIX}/url`, element: <UrlEncoderDecoder /> },
+    { label: 'HTML', icon: <HtmlIcon />, path: `${URL_PATH_PREFIX}/html`, element: <HtmlViewer /> },
+    { label: 'JWT', icon: <GeneratingTokensIcon />, path: `${URL_PATH_PREFIX}/jwt`, element: <JwtDecoder /> },
+    { label: 'TimeZone', icon: <PublicIcon />, path: `${URL_PATH_PREFIX}/timezone`, element: <TimeZoneConverter /> },
+    { label: 'TimeStamp', icon: <AccessTimeIcon />, path: `${URL_PATH_PREFIX}/timestamp`, element: <TimestampConverter /> },
+    { label: 'SecretGen', icon: <PasswordIcon />, path: `${URL_PATH_PREFIX}/secret`, element: <SecretGenerator /> },
+    { label: 'PKCE', icon: <KeyIcon />, path: `${URL_PATH_PREFIX}/pkce`, element: <PkceGenerator /> },
+    { label: 'Number', icon: <NumbersIcon />, path: `${URL_PATH_PREFIX}/number`, element: <NumberSystemConverter /> },
+    { label: 'Regex', icon: <FunctionsIcon />, path: `${URL_PATH_PREFIX}/regex`, element: <RegexTool /> },
 ];
 
-// Function to implement the component
+// Component
 const MainContent: React.FC = () => {
-    // State to keep track of the selected tab index
-    const [value, setValue] = useState<number>(0);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    // Find the tab index that matches current URL
+    const currentTabIndex = tabData.findIndex(tab => tab.path === location.pathname);
+    const value = currentTabIndex === -1 ? 0 : currentTabIndex;
+    // console.log("Current Path:", location.pathname, " | Current Tab Index:", value);
 
     // Handler for tab change
     const handleChange = (_: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
+        navigate(tabData[newValue].path, { replace: true }); // 🔑 navigate to new route
     };
 
     return (
         <Box sx={{ width: '100%' }}>
             {/* Tabs Section */}
-            <Box sx={{
-                borderBottom: 1,
-                borderColor: 'divider',
-                position: 'sticky',
-                top: 0,
-                zIndex: "1000",
-                backgroundColor: 'background.paper',
-            }}>
-                <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="tab functionality">
-                    {/* Dynamically render tabs from the tabData array */}
+            <Box
+                sx={{
+                    borderBottom: 1,
+                    borderColor: 'divider',
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: "1000",
+                    backgroundColor: 'background.paper',
+                }}
+            >
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    aria-label="tab functionality"
+                >
                     {tabData.map((tab, index) => (
-                        <Tab data-cy={tab.label} icon={tab.icon} iconPosition='start' key={index} label={tab.label} />
+                        <Tab
+                            key={index}
+                            data-cy={tab.label}
+                            icon={tab.icon}
+                            iconPosition="start"
+                            label={tab.label}
+                        />
                     ))}
                 </Tabs>
             </Box>
 
-            {/* Tab Panels */}
-            {tabData.map((tab, index) => (
-                <CustomTabPanel key={index} value={value} index={index}>
-                    {tab.children}
-                </CustomTabPanel>
-            ))}
+            {/* Routes Section */}
+            <Routes>
+                {tabData.map((tab, index) => (
+                    <Route key={index} path={tab.path} element={tab.element} />
+                ))}
+            </Routes>
         </Box>
-    );
-};
-
-interface CustomTabPanelProps {
-    value: number;
-    index: number;
-    children: React.ReactNode;
-}
-
-const CustomTabPanel: React.FC<CustomTabPanelProps> = ({ value, index, children }) => {
-    return (
-        <div role="tabpanel" hidden={value !== index}>
-            {value === index && <>{children}</>}
-        </div>
     );
 };
 
